@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "pythonproject7"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = 'src'}]
+
+[tool.poetry.dependencies]
+python = "^3.14"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "mypy (>=1.18.2,<2.0.0)",
+    "isort (>=7.0.0,<8.0.0)",
+    "black (>=25.11.0,<26.0.0)",
+    "flake8 (>=7.3.0,<8.0.0)",
+    "pytest (>=9.0.1,<10.0.0)"
+]
+
+[tool.black]
+line-length = 119
+target-version = ["py314"]  # можно поменять на твою версию Python
+exclude = ".git"
+
+[tool.isort]
+profile = "black"
+line_length = 119
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+exclude = ['.venv']
+ignore_missing_imports = false
+disallow_untyped_defs = true
+warn_return_any = true
