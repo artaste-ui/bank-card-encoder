@@ -30,3 +30,14 @@ def sorted_by_date_test() -> list[dict[str, Any]]:
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425531"},
     ]
+
+
+@pytest.fixture
+def transactions():
+    return [
+        {"id": 939719570, "operationAmount": {"currency": {"code": "USD"}}, "description": "Перевод организации"},
+        {"id": 142264268, "operationAmount": {"currency": {"code": "RUB"}}, "description": "Перевод со счета на счет"},
+        {"id": 873106923, "operationAmount": {"currency": {"code": "RUB"}}, "description": "Перевод со счета на счет"},
+        {"id": 594226727, "operationAmount": {"currency": {"code": "RUB"}}, "description": "Перевод организации"},
+        {"id": 895315941, "operationAmount": {"currency": {"code": "USD"}}, "description": "Перевод с карты на карту"},
+    ]

@@ -6,8 +6,9 @@ def filter_by_currency(transactions, currency):
 
 
 def transaction_descriptions(transactions):
-    '''Возвращает описание каждой операции по очереди'''
-    return (transaction["description"] for transaction in transactions)
+    '''Возвращает описание каждой операции по очереди.'''
+    for transaction in transactions:
+        yield transaction["description"]
 
 
 def card_number_generator(start, stop):

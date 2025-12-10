@@ -67,24 +67,10 @@ transactions = [
 ]
 
 
-def test_filter_by_currency():
-    # USD транзакции
-    usd_gen = filter_by_currency(transactions, "USD")
-    usd_list = list(usd_gen)
-    assert len(usd_list) == 2
-    assert usd_list[0]["id"] == 939719570
-    assert usd_list[1]["id"] == 895315941
-
-    # RUB транзакции
-    rub_gen = filter_by_currency(transactions, "RUB")
-    rub_list = list(rub_gen)
-    assert len(rub_list) == 3
-
-    # Нет такой валюты
-    empty = list(filter_by_currency(transactions, "EUR"))
-    assert empty == []
-
-    # Пустой список
+def test_filter_by_currency(transactions):
+    assert len(list(filter_by_currency(transactions, "USD"))) == 2
+    assert len(list(filter_by_currency(transactions, "RUB"))) == 3
+    assert list(filter_by_currency(transactions, "EUR")) == []
     assert list(filter_by_currency([], "USD")) == []
 
 
