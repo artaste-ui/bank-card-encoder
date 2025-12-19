@@ -1,12 +1,13 @@
 def log(filename=None):
     def wrapper(func):
         def inner(*args, **kwargs):
-            func_name = func.name
+            func_name = func.__name__
             try:
                 result = func(*args, **kwargs)
                 if filename:
                     with open(filename, 'a', encoding='utf-8') as f:
-                        f.write(result + '\n')
+                        f.write(str(result) + '\n')
+                    return result
                 else:
                     print(f"{func_name} ок")
                 return result
@@ -17,5 +18,6 @@ def log(filename=None):
                         f.write(f"{func_name} error: {type(e)}. {inputs}" + '\n')
                 else:
                     print(f"{func_name} error: {type(e)}. {inputs}")
+                raise e
         return inner
     return wrapper
